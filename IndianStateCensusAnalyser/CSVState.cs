@@ -6,7 +6,7 @@ using static IndianStateCensusAnalyser.StateCensusException;
 
 namespace IndianStateCensusAnalyser
 {
-    public class CSVStateCensus
+    public class CSVState
     {
         public string CSVDataUsingEnumerator(string CSVPath, char delimiter = ',')
         {
@@ -16,7 +16,7 @@ namespace IndianStateCensusAnalyser
             if (!File.Exists(CSVPath))
                 throw new StateCensusException(Exception_Type.wrong_path_Exception.ToString());
             string[] Lines = File.ReadAllLines(CSVPath);
-            if (Lines[0] != "State,Population,AreaInSqKm,DensityPerSqKm")
+            if (Lines[0] != "SrNo,State,Name,TIN,StateCode")
                 throw new StateCensusException(Exception_Type.Wrong_Header_Exception.ToString());
             foreach (var line in File.ReadLines(CSVPath))
             {
